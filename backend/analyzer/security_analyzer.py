@@ -25,7 +25,7 @@ SAST_PATTERNS = {
     "eval / exec Usage": (
         r"\beval\(|\bexec\(", 
         "MEDIUM",
-        "eval() veya exec() fonksiyonlarının kullanımı tespit edildi. Güvenilmeyen girdilerin bu fonksiyonlara iletilmesi ciddi güvenlik açıklarına neden olur."
+        "eval veya exec fonksiyonlarının kullanımı tespit edildi. Güvenilmeyen girdilerin bu fonksiyonlara iletilmesi ciddi güvenlik açıklarına neden olur."
     ),
     "Insecure React render (dangerouslySetInnerHTML)": (
         r"dangerouslySetInnerHTML\s*=", 
