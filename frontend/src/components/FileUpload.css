@@ -1,0 +1,423 @@
+.upload-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── Hero ── */
+.upload-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.upload-hero-glow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.upload-hero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-xl);
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+  margin-bottom: 1.5rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.upload-hero-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.upload-hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ── Drop Zone ── */
+.drop-zone {
+  width: 100%;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.drop-zone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 212, 255, 0.03), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.drop-zone:hover,
+.drop-zone.dragging {
+  border-color: var(--accent-cyan);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.drop-zone:hover::before,
+.drop-zone.dragging::before {
+  opacity: 1;
+}
+
+.drop-zone.has-file {
+  cursor: default;
+  padding: 1.75rem 2rem;
+}
+
+.drop-zone-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  transition: all var(--transition-normal);
+}
+
+.drop-zone:hover .drop-zone-icon {
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+  transform: translateY(-4px);
+}
+
+.drop-zone-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.drop-zone-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.drop-zone-browse {
+  color: var(--accent-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.drop-zone-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Selected File ── */
+.selected-file {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  position: relative;
+}
+
+.selected-file-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.selected-file-info {
+  flex: 1;
+  text-align: left;
+}
+
+.selected-file-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.selected-file-size {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.selected-file-remove {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.selected-file-remove:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  background: var(--accent-red-dim);
+}
+
+/* ── Error ── */
+.upload-error {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--accent-red-dim);
+  color: var(--accent-red);
+  font-size: 0.9rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  width: 100%;
+}
+
+/* ── Analyze Button ── */
+.analyze-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
+}
+
+.analyze-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(0, 212, 255, 0.35);
+}
+
+.analyze-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Features ── */
+.upload-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 1.5rem 1rem !important;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+}
+
+.feature-emoji {
+  font-size: 1.75rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.feature-card p {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .upload-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .drop-zone {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
+/* ── Divider ── */
+.upload-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-default), transparent);
+}
+
+.divider-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+/* ── GitHub URL Section ── */
+.github-url-section {
+  width: 100%;
+  padding: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  transition: all var(--transition-normal);
+}
+
+.github-url-section:hover,
+.github-url-section:focus-within {
+  border-color: rgba(0, 212, 255, 0.2) !important;
+  box-shadow: var(--shadow-glow-cyan);
+  background: rgba(0, 212, 255, 0.005) !important;
+}
+
+.github-url-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.github-url-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.github-url-input-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.github-url-input {
+  flex: 1;
+  padding: 0.8rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.github-url-input:focus {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.1);
+}
+
+.github-url-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.github-url-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+}
+
+.github-url-btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+.github-url-hint {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .github-url-input-wrapper {
+    flex-direction: column;
+  }
+  
+  .github-url-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

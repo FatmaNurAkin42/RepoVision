@@ -1,0 +1,53 @@
+/* ── Code Treemap Styles ── */
+.treemap-card {
+  margin-top: 1rem;
+}
+
+.treemap-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.treemap-container {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+/* Custom interactive styling for boxes */
+.treemap-rect {
+  transition: opacity var(--transition-fast), fill var(--transition-fast);
+  cursor: pointer;
+}
+
+.treemap-rect:hover {
+  opacity: 0.85;
+  fill: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Custom Tooltip styling */
+.treemap-tooltip {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.treemap-tooltip .tooltip-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.treemap-tooltip .tooltip-value {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+}

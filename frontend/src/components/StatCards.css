@@ -1,0 +1,70 @@
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem !important;
+}
+
+.stat-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.stat-card-icon.bg-cyan {
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+}
+.stat-card-icon.bg-purple {
+  background: var(--accent-purple-dim);
+  color: var(--accent-purple);
+}
+.stat-card-icon.bg-green {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+}
+.stat-card-icon.bg-orange {
+  background: var(--accent-orange-dim);
+  color: var(--accent-orange);
+}
+.stat-card-icon.bg-red {
+  background: var(--accent-red-dim);
+  color: var(--accent-red);
+}
+
+.stat-card-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+.stat-card-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+@media (max-width: 968px) {
+  .stat-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-cards {
+    grid-template-columns: 1fr;
+  }
+}

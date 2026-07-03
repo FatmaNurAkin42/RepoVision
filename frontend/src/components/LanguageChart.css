@@ -1,0 +1,133 @@
+.language-chart-card {
+  padding: 1.75rem !important;
+}
+
+.language-chart-layout {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.language-chart-pie {
+  flex-shrink: 0;
+  width: 220px;
+}
+
+/* ── Legend ── */
+.language-legend {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.language-legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+}
+
+.language-legend-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.language-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.language-legend-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.language-legend-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.language-legend-pct {
+  font-size: 0.82rem;
+  font-weight: 600;
+  min-width: 42px;
+  text-align: right;
+}
+
+.language-legend-lines {
+  font-size: 0.75rem;
+  min-width: 55px;
+  text-align: right;
+}
+
+/* ── Bar ── */
+.language-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 1.5rem;
+  gap: 2px;
+}
+
+.language-bar-segment {
+  height: 100%;
+  border-radius: 4px;
+  transition: opacity var(--transition-fast);
+  min-width: 4px;
+}
+
+.language-bar-segment:hover {
+  opacity: 0.75;
+}
+
+/* ── Tooltip ── */
+.chart-tooltip {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.chart-tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.chart-tooltip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.chart-tooltip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.chart-tooltip-rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .language-chart-layout {
+    flex-direction: column;
+  }
+
+  .language-chart-pie {
+    width: 100%;
+  }
+}
